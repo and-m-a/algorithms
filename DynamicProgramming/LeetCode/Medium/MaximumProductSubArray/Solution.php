@@ -1,5 +1,6 @@
 <?php
 
+// Optimal solution: speed - O(n)
 class Solution {
 
     private $cache = [];
