@@ -1,6 +1,8 @@
 <?php
 
 class Solution {
+    
+    private $cache = [];
 
     /**
      * @param Integer $n
