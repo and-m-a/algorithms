@@ -1,6 +1,9 @@
 <?php 
 
 class Solution {
+    
+    private $grouped = [];
+    private $cache = [];
 
     /**
      * @param Integer[] $arr
