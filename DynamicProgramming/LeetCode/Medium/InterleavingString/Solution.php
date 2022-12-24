@@ -1,6 +1,6 @@
 <?php
-     
- class Solution {
+
+class Solution {
 
     /**
      * @param String $s1
@@ -27,15 +27,15 @@
             return $l1 === "" && $l2 === "" ? true : false;
         }
 
-        if (isset($this->cache[$i1][$i2][$i3])) {
-            return $this->cache[$i1][$i2][$i3];
+        if (isset($this->cache[$i1][$i2])) {
+            return $this->cache[$i1][$i2];
         }
 
         if ($l1 && $l3 === $l1) {
             $sub = $this->sub($i1 + 1, $i2, $i3 + 1);
 
             if ($sub) {
-                return $this->cache[$i1][$i2][$i3] = true;
+                return $this->cache[$i1][$i2] = true;
             }
         }
 
@@ -43,10 +43,10 @@
             $sub = $this->sub($i1, $i2 + 1, $i3 + 1);
 
             if ($sub) {
-                return $this->cache[$i1][$i2][$i3] = true;
+                return $this->cache[$i1][$i2] = true;
             }
         }
 
-        return $this->cache[$i1][$i2][$i3] = false;
+        return $this->cache[$i1][$i2] = false;
     }
 }
