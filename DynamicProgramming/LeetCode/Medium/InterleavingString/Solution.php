@@ -1,7 +1,12 @@
 <?php
 
 class Solution {
-
+    
+    private $s1;
+    private $s2;
+    private $s3;
+    private $cache = [];
+    
     /**
      * @param String $s1
      * @param String $s2
