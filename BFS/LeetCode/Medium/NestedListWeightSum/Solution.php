@@ -1,0 +1,57 @@
+<?php
+
+/**
+ * // This is the interface that allows for creating nested lists.
+ * // You should not implement it, or speculate about its implementation
+ * class NestedInteger {
+
+ *     // if value is not specified, initializes an empty list.
+ *     // Otherwise initializes a single integer equal to value.
+ *     function __construct($value = null)
+
+ *     // Return true if this NestedInteger holds a single integer, rather than a nested list.
+ *     function isInteger() : bool
+ *
+ *     // Return the single integer that this NestedInteger holds, if it holds a single integer
+ *     // The result is undefined if this NestedInteger holds a nested list
+ *     function getInteger()
+ *
+ *     // Set this NestedInteger to hold a single integer.
+ *     function setInteger($i) : void
+ *
+ *     // Set this NestedInteger to hold a nested list and adds a nested integer to it.
+ *     function add($ni) : void
+ *
+ *     // Return the nested list that this NestedInteger holds, if it holds a nested list
+ *     // The result is undefined if this NestedInteger holds a single integer
+ *     function getList() : array
+ * }
+ */
+class Solution {
+
+    /**
+     * @param NestedInteger[] $nestedList
+     * @return Integer
+     */
+    function depthSum($nestedList) {
+        return $this->calculateDepthSum($nestedList, 1);
+    }
+
+    function calculateDepthSum(array $nestedList, int $level): int
+    {
+        $result = 0;
+        
+        foreach ($nestedList as $obj) {
+            
+            $subList = $obj->getList();
+
+            if ($subList) {
+                $result += $this->calculateDepth($subList, $level + 1);
+            } else {
+                $result += $obj->getInteger() * $level;
+            }
+        }
+
+        return $result;
+    }
+}
